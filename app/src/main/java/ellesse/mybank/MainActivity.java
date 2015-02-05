@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
         myBank.status();
 
         balance= (TextView) findViewById(R.id.balance_display);
-        balance.setText(myBank.status());
+        balance.setText("Current is:"+myBank.status());
 
 
         input_amount=(EditText) findViewById(R.id.input_amount_field);
@@ -42,17 +42,16 @@ public class MainActivity extends ActionBarActivity {
 
         deposit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { myBank.deposit((int) input_amount.);
-                balance.setText(myBank.status());
+            public void onClick(View v) { myBank.deposit(Double.parseDouble(input_amount.getText().toString()));
+                balance.setText("Current is:"+myBank.status());
 
             }
         });
 
         withdraw.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                public void onClick(View v) { myBank.withdraw((int) input_amount.getText().toString());
-                    balance.setText(myBank.status());
+            public void onClick(View v) { myBank.withdraw(Double.parseDouble(input_amount.getText().toString()));
+                    balance.setText("Current is:"+myBank.status());
 
 
                 }

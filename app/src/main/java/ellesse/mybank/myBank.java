@@ -7,26 +7,26 @@ import android.util.Log;
  */
 public class myBank {
 
-    private int amount;
+    private double balance;
 
 
     public myBank(){
-        amount=0;
+        balance=0;
         Log.d("myBank", "myBank initialized with 0$");}
 
-    public void deposit(int input_amount){
-        amount=amount+input_amount;
+    public void deposit(double input_amount){
+        balance=balance+input_amount;
         Log.d("myBank", "myBank credited with "+input_amount);
     }
 
-    public void withdraw(int input_amount){
-        amount=amount-input_amount;
+    public void withdraw(double input_amount){
+        balance=balance-input_amount;
         Log.d("myBank", "myBank debited with "+input_amount);
     }
 
-    public String status(){
+    public double status(){
 
-        Log.d("myBank", "myBank current is "+ amount);
-        return "Current: "+amount;
+        Log.d("myBank", "myBank current is "+ balance);
+        return balance;
     }
 }
