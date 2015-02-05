@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        myBank myBank = new myBank();
+        final myBank myBank = new myBank();
 
         myBank.deposit(100);
         myBank.withdraw(20);
@@ -33,11 +34,29 @@ public class MainActivity extends ActionBarActivity {
 
         balance= (TextView) findViewById(R.id.balance_display);
         balance.setText(myBank.status());
-        
+
 
         input_amount=(EditText) findViewById(R.id.input_amount_field);
         deposit=(Button) findViewById(R.id.deposit_button);
         withdraw=(Button) findViewById(R.id.withdraw_button);
+
+        deposit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { myBank.deposit((int) input_amount.);
+                balance.setText(myBank.status());
+
+            }
+        });
+
+        withdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                public void onClick(View v) { myBank.withdraw((int) input_amount.getText().toString());
+                    balance.setText(myBank.status());
+
+
+                }
+        });
 
     }
 
