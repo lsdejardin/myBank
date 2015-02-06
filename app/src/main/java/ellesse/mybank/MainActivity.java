@@ -2,6 +2,7 @@ package ellesse.mybank;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,10 +13,10 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-    EditText input_amount;
-    Button deposit;
-    Button withdraw;
-    TextView balance;
+    EditText mInputAmount;
+    Button mDepositButton;
+    Button mWithdrawButton;
+    TextView mBalanceDisplay;
 
 
 
@@ -24,37 +25,40 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //BankAccount.OVERDRAFT_FEE=0;
+    Log.d("BankAccount", "Overdraft fee is " + BankAccount.OVERDRAFT_FEE);
 
-
-        final myBank myBank = new myBank();
+        final BankAccount myBank = new BankAccount();
 
         myBank.deposit(100);
         myBank.withdraw(20);
         myBank.status();
 
-        balance= (TextView) findViewById(R.id.balance_display);
-        balance.setText("Current is:"+myBank.status());
+        mBalanceDisplay = (TextView) findViewById(R.id.balance_display);
+        mBalanceDisplay.setText("Current is:" + myBank.status());
 
 
-        input_amount=(EditText) findViewById(R.id.input_amount_field);
-        deposit=(Button) findViewById(R.id.deposit_button);
-        withdraw=(Button) findViewById(R.id.withdraw_button);
+        mInputAmount =(EditText) findViewById(R.id.input_amount_field);
+        mDepositButton =(Button) findViewById(R.id.deposit_button);
+        mWithdrawButton =(Button) findViewById(R.id.withdraw_button);
 
-        deposit.setOnClickListener(new View.OnClickListener() {
+        mDepositButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { myBank.deposit(Double.parseDouble(input_amount.getText().toString()));
-                balance.setText("Current is:"+myBank.status());
+            public void onClick(View v) {
+                myBank.deposit(Double.parseDouble(mInputAmount.getText().toString()));
+                mBalanceDisplay.setText("Current is:" + myBank.status());
 
             }
         });
 
-        withdraw.setOnClickListener(new View.OnClickListener() {
+        mWithdrawButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { myBank.withdraw(Double.parseDouble(input_amount.getText().toString()));
-                    balance.setText("Current is:"+myBank.status());
+            public void onClick(View v) {
+                myBank.withdraw(Double.parseDouble(mInputAmount.getText().toString()));
+                mBalanceDisplay.setText("Current is:" + myBank.status());
 
 
-                }
+            }
         });
 
     }
